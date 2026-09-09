@@ -1,0 +1,152 @@
+﻿/* Custom Styling for "A Roman Witness" Book Website */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;600;700;800;900&family=Merriweather:ital,wght@0,3,0,400;0,700;1,300;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  --roman-gold: #c5a059;
+  --roman-gold-bright: #e6c575;
+  --roman-purple: #3b0b3e;
+  --roman-purple-dark: #240527;
+  --roman-crimson: #801818;
+  --parchment-light: #fbf7ee;
+  --parchment-base: #f3ecdc;
+  --stone-dark: #161514;
+  --stone-card: #201e1b;
+  --stone-border: #38332c;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--stone-dark);
+  color: #e5dec9;
+  overflow-x: hidden;
+}
+
+.font-roman {
+  font-family: 'Cinzel', serif;
+}
+
+.font-roman-decor {
+  font-family: 'Cinzel Decorative', serif;
+}
+
+.font-serif-book {
+  font-family: 'Merriweather', serif;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #141312;
+}
+::-webkit-scrollbar-thumb {
+  background: #3e382f;
+  border-radius: 4px;
+  border: 1px solid #c5a05944;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c5a059;
+}
+
+/* Parchment and Gold Gradients */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #f7e2a9 0%, #c5a059 50%, #947231 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.crimson-gradient-text {
+  background: linear-gradient(135deg, #f87171 0%, #dc2626 50%, #991b1b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-border {
+  border: 1px solid rgba(197, 160, 89, 0.35);
+  box-shadow: 0 0 15px rgba(197, 160, 89, 0.08);
+}
+
+.gold-glow:hover {
+  box-shadow: 0 0 25px rgba(197, 160, 89, 0.3);
+  border-color: rgba(230, 197, 117, 0.7);
+}
+
+/* Roman Ribbon / Banner */
+.roman-banner {
+  background: linear-gradient(90deg, transparent, rgba(59, 11, 62, 0.8) 20%, rgba(59, 11, 62, 0.8) 80%, transparent);
+  border-top: 1px solid rgba(197, 160, 89, 0.4);
+  border-bottom: 1px solid rgba(197, 160, 89, 0.4);
+}
+
+/* Map Markers */
+.map-marker {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 10;
+}
+
+.map-marker:hover {
+  transform: translate(-50%, -50%) scale(1.25);
+  z-index: 30;
+}
+
+.map-marker.active {
+  transform: translate(-50%, -50%) scale(1.35);
+  z-index: 35;
+}
+
+.marker-pulse {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid #e6c575;
+  animation: pulse-ring 2.4s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.9;
+  }
+  70% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+/* Reader Themes */
+.reader-theme-papyrus {
+  background-color: #f7f1e1;
+  color: #2b261e;
+  border-color: #d1c4a5;
+}
+.reader-theme-papyrus .text-muted {
+  color: #706552;
+}
+
+.reader-theme-night {
+  background-color: #141312;
+  color: #e5dec9;
+  border-color: #38332c;
+}
+.reader-theme-night .text-muted {
+  color: #9c9382;
+}
+
+.reader-theme-sepia {
+  background-color: #26211c;
+  color: #f0e6d2;
+  border-color: #4a3e31;
+}
+.reader-theme-sepia .text-muted {
+  color: #b0a18c;
+}
