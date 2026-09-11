@@ -1,4 +1,4 @@
-﻿// Main Application Controller for "A Roman Witness"
+// Main Application Controller for "A Roman Witness"
 import { NOVEL_META, CHARACTERS, MAP_LOCATIONS, CHAPTERS, TIMELINE, GLOSSARY } from './novelData.js';
 import { jerusalemMap } from './mapViewer.js';
 import { soundscape } from './soundscape.js';
@@ -6,7 +6,7 @@ import { soundscape } from './soundscape.js';
 class App {
   constructor() {
     this.currentChapter = 1;
-    this.readerTheme = 'night'; // 'night', 'papyrus', 'sepia'
+    this.readerTheme = 'papyrus'; // Default to authentic papyrus
     this.readerFontSize = 16;
     this.activeFaction = 'all';
     this.soundActive = false;
@@ -36,7 +36,7 @@ class App {
     });
   }
 
-  // Render Characters Gallery
+  // Render Characters Gallery (Always Full-Color Artwork)
   renderCharacters() {
     const grid = document.getElementById('characters-grid');
     if (!grid) return;
@@ -59,32 +59,32 @@ class App {
     });
 
     grid.innerHTML = filtered.map(char => `
-      <div class="group relative bg-stone-900/80 border border-stone-800 hover:border-amber-500/50 rounded-2xl overflow-hidden shadow-xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col cursor-pointer character-card" data-id="${char.id}">
-        <!-- Portrait -->
-        <div class="relative aspect-[3/4] w-full overflow-hidden bg-stone-950">
-          <img src="${char.image}" alt="${char.name}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-          <div class="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/20 to-transparent"></div>
+      <div class="group relative parchment-panel border border-[#cebf9e] hover:border-[#b38222] rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col cursor-pointer character-card" data-id="${char.id}">
+        <!-- Portrait in Vibrant Full Color -->
+        <div class="relative aspect-[3/4] w-full overflow-hidden bg-[#e0d4bc]">
+          <img src="${char.image}" alt="${char.name}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 full-color-artwork" />
+          <div class="absolute inset-0 bg-gradient-to-t from-[#201810]/90 via-[#201810]/20 to-transparent"></div>
           
           <div class="absolute top-3 right-3">
-            <span class="text-[10px] uppercase font-roman tracking-wider font-semibold px-2 py-0.5 rounded-full bg-stone-950/80 text-amber-300 border border-amber-500/30">
+            <span class="text-[10px] uppercase font-roman tracking-wider font-semibold px-2 py-0.5 rounded-full bg-[#faf5ea]/90 text-[#8a221b] border border-[#c4b699] shadow-sm">
               ${char.faction.split('→')[0].trim()}
             </span>
           </div>
 
           <div class="absolute bottom-3 left-4 right-4">
-            <p class="text-amber-400/90 text-xs font-roman uppercase tracking-wider">${char.latinTitle}</p>
-            <h3 class="text-lg md:text-xl font-roman font-bold text-amber-100 group-hover:text-amber-300 transition-colors">${char.name}</h3>
-            <p class="text-stone-400 text-xs mt-0.5">${char.role}</p>
+            <p class="text-[#e8c87d] text-xs font-roman uppercase tracking-wider">${char.latinTitle}</p>
+            <h3 class="text-lg md:text-xl font-roman font-bold text-[#faf5ea] group-hover:text-[#e8c87d] transition-colors">${char.name}</h3>
+            <p class="text-[#d8ccb8] text-xs mt-0.5 font-serif-book">${char.role}</p>
           </div>
         </div>
 
         <!-- Content -->
-        <div class="p-4 flex-1 flex flex-col justify-between space-y-3">
-          <p class="text-stone-300 text-xs line-clamp-3 leading-relaxed">${char.bio}</p>
+        <div class="p-4 flex-1 flex flex-col justify-between space-y-3 bg-[#faf6ee]">
+          <p class="text-[#3b2f21] text-xs line-clamp-3 leading-relaxed font-sans-ui">${char.bio}</p>
 
-          <div class="pt-2 border-t border-stone-800/80 flex items-center justify-between">
-            <span class="text-[11px] text-amber-500/80 font-roman italic truncate mr-2">“${char.symbol}”</span>
-            <span class="text-amber-400 text-xs font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+          <div class="pt-2 border-t border-[#dfd2ba] flex items-center justify-between">
+            <span class="text-[11px] text-[#825c11] font-serif-book italic truncate mr-2">“${char.symbol}”</span>
+            <span class="text-[#7d1c15] text-xs font-semibold font-roman flex items-center gap-1 group-hover:translate-x-1 transition-transform">
               Dossier &rarr;
             </span>
           </div>
@@ -110,46 +110,46 @@ class App {
     if (!modal || !container) return;
 
     container.innerHTML = `
-      <div class="relative bg-stone-950 border border-amber-500/40 rounded-3xl overflow-hidden shadow-2xl max-w-3xl w-full mx-4 flex flex-col md:flex-row max-h-[90vh]">
+      <div class="relative bg-[#faf6ee] border-2 border-[#b38222] rounded-3xl overflow-hidden shadow-2xl max-w-3xl w-full mx-4 flex flex-col md:flex-row max-h-[90vh]">
         <!-- Close Button -->
-        <button id="modal-close-btn" class="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-stone-900/90 text-amber-300 hover:text-white flex items-center justify-center border border-amber-500/30 text-lg transition-colors">
+        <button id="modal-close-btn" class="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-[#dfd4bc] text-[#3b2f21] hover:text-[#9e2a22] hover:bg-[#faf5ea] flex items-center justify-center border border-[#b38222]/40 text-lg transition-colors font-bold shadow">
           &times;
         </button>
 
-        <!-- Portrait Side -->
-        <div class="md:w-5/12 relative h-64 md:h-auto bg-stone-900 flex-shrink-0">
-          <img src="${char.image}" alt="${char.name}" class="w-full h-full object-cover" />
-          <div class="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-stone-950 via-transparent to-transparent"></div>
+        <!-- Portrait Side (Full Color) -->
+        <div class="md:w-5/12 relative h-64 md:h-auto bg-[#e0d4bc] flex-shrink-0">
+          <img src="${char.image}" alt="${char.name}" class="w-full h-full object-cover full-color-artwork" />
+          <div class="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#201810]/60 via-transparent to-transparent"></div>
         </div>
 
         <!-- Bio Side -->
-        <div class="p-6 md:p-8 overflow-y-auto flex-1 space-y-4 text-stone-300">
+        <div class="p-6 md:p-8 overflow-y-auto flex-1 space-y-4 text-[#2b2218]">
           <div>
-            <span class="px-2.5 py-0.5 text-xs font-roman uppercase tracking-wider bg-amber-500/20 text-amber-300 border border-amber-500/30 rounded-full font-semibold">
+            <span class="px-2.5 py-0.5 text-xs font-roman uppercase tracking-wider bg-[#9e2a22]/15 text-[#7d1c15] border border-[#9e2a22]/30 rounded-full font-semibold">
               ${char.faction}
             </span>
-            <h2 class="text-2xl md:text-3xl font-roman-decor font-bold text-amber-100 mt-2">${char.name}</h2>
-            <p class="text-amber-400 text-xs font-roman uppercase tracking-wider">${char.latinTitle}</p>
-            <p class="text-stone-400 text-sm font-medium mt-0.5">${char.role}</p>
+            <h2 class="text-2xl md:text-3xl font-roman-decor font-bold text-[#382618] mt-2">${char.name}</h2>
+            <p class="text-[#825c11] text-xs font-roman uppercase tracking-wider">${char.latinTitle}</p>
+            <p class="text-[#594936] text-sm font-medium mt-0.5">${char.role}</p>
           </div>
 
           <!-- Signature Quote -->
-          <div class="p-4 rounded-xl bg-amber-950/20 border-l-2 border-amber-500 text-stone-200 italic font-serif-book text-sm leading-relaxed">
+          <div class="p-4 rounded-xl bg-[#ede3cb] border-l-4 border-[#9e2a22] text-[#2c2014] italic font-serif-book text-sm leading-relaxed shadow-sm">
             “${char.quote}”
           </div>
 
           <div>
-            <h4 class="text-xs uppercase font-roman tracking-wider text-amber-500 font-bold mb-1">Character Profile</h4>
-            <p class="text-sm leading-relaxed text-stone-300">${char.bio}</p>
+            <h4 class="text-xs uppercase font-roman tracking-wider text-[#825c11] font-bold mb-1">Character Profile</h4>
+            <p class="text-sm leading-relaxed text-[#3b2f21]">${char.bio}</p>
           </div>
 
           <div>
-            <h4 class="text-xs uppercase font-roman tracking-wider text-amber-500 font-bold mb-1">Dramatic Arc in "A Roman Witness"</h4>
-            <p class="text-sm leading-relaxed text-stone-300">${char.novelArc}</p>
+            <h4 class="text-xs uppercase font-roman tracking-wider text-[#825c11] font-bold mb-1">Dramatic Arc in "A Roman Witness"</h4>
+            <p class="text-sm leading-relaxed text-[#3b2f21]">${char.novelArc}</p>
           </div>
 
-          <div class="pt-2 border-t border-stone-800 text-xs text-amber-300/80">
-            <span class="font-semibold text-amber-400">Signature Symbol:</span> ${char.symbol}
+          <div class="pt-2 border-t border-[#dfd2ba] text-xs text-[#594936]">
+            <span class="font-semibold text-[#825c11]">Signature Symbol:</span> ${char.symbol}
           </div>
         </div>
       </div>
@@ -180,13 +180,13 @@ class App {
     if (!list) return;
 
     list.innerHTML = CHAPTERS.map(ch => `
-      <button class="chapter-nav-item w-full text-left p-3 rounded-xl transition-all flex items-start gap-3 border ${ch.num === this.currentChapter ? 'bg-amber-950/30 border-amber-500 text-amber-200' : 'bg-stone-900/60 border-stone-800/80 text-stone-400 hover:text-stone-200 hover:border-stone-700'}" data-num="${ch.num}">
-        <span class="w-6 h-6 rounded-md bg-stone-950 border border-amber-500/30 text-amber-400 font-roman font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">
+      <button class="chapter-nav-item w-full text-left p-3 rounded-xl transition-all flex items-start gap-3 border ${ch.num === this.currentChapter ? 'bg-[#ede3cb] border-[#b38222] text-[#382618] shadow-sm font-semibold' : 'bg-[#faf6ee] border-[#dfd2ba] text-[#594936] hover:bg-[#f3ead8]'}" data-num="${ch.num}">
+        <span class="w-6 h-6 rounded-md bg-[#dfd4bc] border border-[#b38222]/40 text-[#6e5318] font-roman font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">
           ${ch.num}
         </span>
         <div class="flex-1 min-w-0">
-          <div class="text-xs font-roman font-semibold truncate ${ch.num === this.currentChapter ? 'text-amber-200' : 'text-stone-300'}">${ch.title}</div>
-          <div class="text-[11px] text-stone-500 truncate mt-0.5">${ch.theme}</div>
+          <div class="text-xs font-roman font-semibold truncate ${ch.num === this.currentChapter ? 'text-[#7d1c15]' : 'text-[#382618]'}">${ch.title}</div>
+          <div class="text-[11px] text-[#7a6b57] truncate mt-0.5">${ch.theme}</div>
         </div>
       </button>
     `).join('');
@@ -208,11 +208,11 @@ class App {
     document.querySelectorAll('.chapter-nav-item').forEach(item => {
       const itemNum = parseInt(item.dataset.num, 10);
       if (itemNum === num) {
-        item.classList.add('bg-amber-950/30', 'border-amber-500', 'text-amber-200');
-        item.classList.remove('bg-stone-900/60', 'border-stone-800/80', 'text-stone-400');
+        item.classList.add('bg-[#ede3cb]', 'border-[#b38222]', 'text-[#382618]', 'shadow-sm', 'font-semibold');
+        item.classList.remove('bg-[#faf6ee]', 'border-[#dfd2ba]', 'text-[#594936]');
       } else {
-        item.classList.remove('bg-amber-950/30', 'border-amber-500', 'text-amber-200');
-        item.classList.add('bg-stone-900/60', 'border-stone-800/80', 'text-stone-400');
+        item.classList.remove('bg-[#ede3cb]', 'border-[#b38222]', 'text-[#382618]', 'shadow-sm', 'font-semibold');
+        item.classList.add('bg-[#faf6ee]', 'border-[#dfd2ba]', 'text-[#594936]');
       }
     });
 
@@ -222,44 +222,44 @@ class App {
     display.innerHTML = `
       <div class="space-y-6">
         <!-- Chapter Header -->
-        <div class="border-b border-amber-500/20 pb-5">
-          <div class="flex items-center justify-between text-xs font-roman text-amber-500 tracking-widest uppercase">
+        <div class="border-b border-[#cfbf9e] pb-5">
+          <div class="flex items-center justify-between text-xs font-roman text-[#825c11] tracking-widest uppercase">
             <span>Chapter ${ch.num} of 20</span>
             <span>Page ${ch.page} in Novel</span>
           </div>
-          <h2 class="text-2xl md:text-4xl font-roman-decor font-bold text-amber-100 mt-2">${ch.title}</h2>
-          <p class="text-sm font-roman text-amber-400/80 mt-1">${ch.theme}</p>
+          <h2 class="text-2xl md:text-4xl font-roman-decor font-bold text-[#382618] mt-2">${ch.title}</h2>
+          <p class="text-sm font-roman text-[#7d1c15] mt-1">${ch.theme}</p>
         </div>
 
         <!-- Key Quote Banner -->
-        <div class="p-4 rounded-2xl bg-amber-500/10 border-l-4 border-amber-500 text-stone-200 italic font-serif-book text-sm md:text-base leading-relaxed">
+        <div class="p-4 rounded-2xl bg-[#ede3cb] border-l-4 border-[#9e2a22] text-[#2c2014] italic font-serif-book text-sm md:text-base leading-relaxed shadow-sm">
           “${ch.keyQuote}”
         </div>
 
         <!-- Synopsis -->
         <div>
-          <h4 class="text-xs uppercase font-roman tracking-wider text-amber-500 font-bold mb-2">Chapter Overview</h4>
-          <p class="text-sm md:text-base leading-relaxed opacity-90">${ch.summary}</p>
+          <h4 class="text-xs uppercase font-roman tracking-wider text-[#825c11] font-bold mb-2">Chapter Overview</h4>
+          <p class="text-sm md:text-base leading-relaxed text-[#3b2f21]">${ch.summary}</p>
         </div>
 
         <!-- Verbatim Excerpt -->
-        <div class="pt-4 border-t border-stone-800">
+        <div class="pt-4 border-t border-[#dfd2ba]">
           <div class="flex items-center gap-2 mb-3">
-            <span class="w-2 h-2 rounded-full bg-amber-500"></span>
-            <h4 class="text-xs uppercase font-roman tracking-wider text-amber-400 font-bold">Featured Reading Passage from Novel</h4>
+            <span class="w-2 h-2 rounded-full bg-[#9e2a22]"></span>
+            <h4 class="text-xs uppercase font-roman tracking-wider text-[#7d1c15] font-bold">Featured Reading Passage from Novel</h4>
           </div>
-          <div class="p-5 md:p-6 rounded-2xl bg-stone-950/50 border border-amber-500/20 font-serif-book text-sm md:text-base leading-loose whitespace-pre-line opacity-95 shadow-inner">
+          <div class="p-5 md:p-6 rounded-2xl bg-[#faf6ee] border border-[#cfbe9b] font-serif-book text-sm md:text-base leading-loose whitespace-pre-line text-[#231b14] shadow-inner">
             ${ch.excerpt}
           </div>
         </div>
 
         <!-- Chapter Navigation Footer -->
-        <div class="pt-6 border-t border-amber-500/20 flex items-center justify-between">
-          <button id="btn-prev-ch" class="px-4 py-2 rounded-xl border border-stone-800 hover:border-amber-500 text-xs font-roman text-amber-300 disabled:opacity-30 disabled:pointer-events-none transition-all flex items-center gap-2" ${num <= 1 ? 'disabled' : ''}>
+        <div class="pt-6 border-t border-[#cfbf9e] flex items-center justify-between">
+          <button id="btn-prev-ch" class="px-4 py-2 rounded-xl btn-roman-stone text-xs font-roman font-bold disabled:opacity-30 disabled:pointer-events-none transition-all flex items-center gap-2" ${num <= 1 ? 'disabled' : ''}>
             &larr; Previous Chapter
           </button>
-          <span class="text-xs text-stone-400 font-roman">Chapter ${ch.num} / 20</span>
-          <button id="btn-next-ch" class="px-4 py-2 rounded-xl bg-amber-600 hover:bg-amber-500 text-stone-950 font-bold text-xs font-roman disabled:opacity-30 disabled:pointer-events-none transition-all flex items-center gap-2" ${num >= 20 ? 'disabled' : ''}>
+          <span class="text-xs text-[#6e5d48] font-roman">Chapter ${ch.num} / 20</span>
+          <button id="btn-next-ch" class="px-4 py-2 rounded-xl btn-roman-primary text-xs font-roman font-bold disabled:opacity-30 disabled:pointer-events-none transition-all flex items-center gap-2" ${num >= 20 ? 'disabled' : ''}>
             Next Chapter &rarr;
           </button>
         </div>
@@ -283,7 +283,7 @@ class App {
       btn.addEventListener('click', (e) => {
         const theme = e.currentTarget.dataset.theme;
         this.readerTheme = theme;
-        readerContainer.className = `p-6 md:p-10 rounded-3xl border shadow-2xl transition-colors duration-300 reader-theme-${theme}`;
+        readerContainer.className = `p-6 md:p-10 rounded-3xl border shadow-xl transition-colors duration-300 reader-theme-${theme}`;
       });
     });
 
@@ -310,22 +310,22 @@ class App {
     if (!container) return;
 
     container.innerHTML = TIMELINE.map((item, index) => `
-      <div class="relative pl-8 md:pl-10 pb-8 border-l-2 border-amber-500/30 group">
+      <div class="relative pl-8 md:pl-10 pb-8 border-l-2 border-[#b38222]/50 group">
         <!-- Milestone Icon -->
-        <div class="absolute -left-2.5 top-0 w-5 h-5 rounded-full bg-stone-950 border-2 border-amber-500 group-hover:bg-amber-500 group-hover:scale-125 transition-all"></div>
+        <div class="absolute -left-2.5 top-0 w-5 h-5 rounded-full bg-[#faf5ea] border-2 border-[#b38222] group-hover:bg-[#b38222] group-hover:scale-125 transition-all shadow-sm"></div>
         
         <!-- Day / Location Badge -->
         <div class="flex flex-wrap items-center gap-2 mb-1">
-          <span class="px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-roman font-bold">
+          <span class="px-2.5 py-0.5 rounded-full bg-[#9e2a22]/15 text-[#7d1c15] border border-[#9e2a22]/30 text-xs font-roman font-bold">
             ${item.day}
           </span>
-          <span class="text-xs font-roman text-stone-400">
+          <span class="text-xs font-roman text-[#6e5d48]">
             📍 ${item.location}
           </span>
         </div>
 
-        <h3 class="text-lg md:text-xl font-roman font-bold text-amber-100 mt-1">${item.title}</h3>
-        <p class="text-sm text-stone-300 mt-2 leading-relaxed">${item.desc}</p>
+        <h3 class="text-lg md:text-xl font-roman font-bold text-[#382618] mt-1">${item.title}</h3>
+        <p class="text-sm text-[#3b2f21] mt-2 leading-relaxed font-sans-ui">${item.desc}</p>
       </div>
     `).join('');
   }
@@ -336,14 +336,14 @@ class App {
     if (!container) return;
 
     container.innerHTML = GLOSSARY.map(item => `
-      <div class="p-4 rounded-2xl bg-stone-900/60 border border-stone-800 hover:border-amber-500/40 transition-colors shadow-lg">
+      <div class="p-4 rounded-2xl parchment-panel border border-[#cebf9e] hover:border-[#b38222] transition-colors shadow-sm">
         <div class="flex items-center justify-between">
-          <h4 class="font-roman font-bold text-amber-200 text-sm md:text-base">${item.term}</h4>
-          <span class="text-[10px] uppercase tracking-wider font-roman px-2 py-0.5 bg-amber-950/60 text-amber-400 rounded-md border border-amber-500/20">
+          <h4 class="font-roman font-bold text-[#382618] text-sm md:text-base">${item.term}</h4>
+          <span class="text-[10px] uppercase tracking-wider font-roman px-2 py-0.5 bg-[#ede3cb] text-[#825c11] rounded-md border border-[#cbb898]">
             ${item.category}
           </span>
         </div>
-        <p class="text-xs md:text-sm text-stone-300 mt-2 leading-relaxed">${item.definition}</p>
+        <p class="text-xs md:text-sm text-[#3b2f21] mt-2 leading-relaxed font-sans-ui">${item.definition}</p>
       </div>
     `).join('');
   }
@@ -359,14 +359,14 @@ class App {
         if (!this.soundActive) {
           soundscape.start();
           this.soundActive = true;
-          toggleBtn.classList.add('bg-amber-500', 'text-stone-950');
-          toggleBtn.classList.remove('bg-stone-900', 'text-amber-300');
+          toggleBtn.classList.add('bg-[#9e2a22]', 'text-[#faf5ea]');
+          toggleBtn.classList.remove('text-[#423425]');
           if (soundStatus) soundStatus.textContent = 'Ambient: On';
         } else {
           soundscape.stop();
           this.soundActive = false;
-          toggleBtn.classList.remove('bg-amber-500', 'text-stone-950');
-          toggleBtn.classList.add('bg-stone-900', 'text-amber-300');
+          toggleBtn.classList.remove('bg-[#9e2a22]', 'text-[#faf5ea]');
+          toggleBtn.classList.add('text-[#423425]');
           if (soundStatus) soundStatus.textContent = 'Ambient: Off';
         }
       });
@@ -385,11 +385,11 @@ class App {
     document.querySelectorAll('.char-filter-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
         document.querySelectorAll('.char-filter-btn').forEach(b => {
-          b.classList.remove('bg-amber-600', 'text-stone-950', 'font-bold');
-          b.classList.add('bg-stone-900', 'text-stone-300');
+          b.classList.remove('bg-[#9e2a22]', 'text-[#faf5ea]', 'font-bold');
+          b.classList.add('btn-roman-stone');
         });
-        e.currentTarget.classList.add('bg-amber-600', 'text-stone-950', 'font-bold');
-        e.currentTarget.classList.remove('bg-stone-900', 'text-stone-300');
+        e.currentTarget.classList.add('bg-[#9e2a22]', 'text-[#faf5ea]', 'font-bold');
+        e.currentTarget.classList.remove('btn-roman-stone');
         this.activeFaction = e.currentTarget.dataset.faction;
         this.renderCharacters();
       });

@@ -1,86 +1,204 @@
-﻿/* Custom Styling for "A Roman Witness" Book Website */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;600;700;800;900&family=Merriweather:ital,wght@0,3,0,400;0,700;1,300;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+/* Ancient Judea & Weathered Papyrus Styling for "A Roman Witness" */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;600;700;800;900&family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
 :root {
-  --roman-gold: #c5a059;
-  --roman-gold-bright: #e6c575;
-  --roman-purple: #3b0b3e;
-  --roman-purple-dark: #240527;
-  --roman-crimson: #801818;
-  --parchment-light: #fbf7ee;
-  --parchment-base: #f3ecdc;
-  --stone-dark: #161514;
-  --stone-card: #201e1b;
-  --stone-border: #38332c;
+  /* Ancient Judean & Roman Antiquarian Palette */
+  --papyrus-light: #faf5ea;
+  --papyrus-base: #f3ecdb;
+  --papyrus-dark: #e5dac1;
+  --papyrus-border: #cebf9e;
+  --papyrus-border-dark: #b59f77;
+  
+  --limestone-light: #f1ebd9;
+  --limestone-base: #dfd4bc;
+  --limestone-dark: #c4b699;
+  --limestone-border: #a89776;
+
+  --roman-purple: #4e1248;
+  --roman-purple-dark: #32072f;
+  --roman-purple-light: #6e1c66;
+  
+  --roman-gold: #b38222;
+  --roman-gold-bright: #d4a036;
+  --roman-gold-dark: #825c11;
+  --bronze: #8c6838;
+
+  --wax-red: #9e2a22;
+  --wax-red-dark: #6e1610;
+  
+  --ink-primary: #231b14;
+  --ink-secondary: #4a3c2c;
+  --ink-muted: #6f5f4b;
 }
 
+/* Base Body with Papyrus Grain Texture */
 body {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  background-color: var(--stone-dark);
-  color: #e5dec9;
+  font-family: 'EB Garamond', Georgia, serif;
+  background-color: var(--papyrus-base);
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 250, 0.8) 0%, transparent 60%),
+    radial-gradient(circle at 10% 40%, rgba(214, 196, 160, 0.4) 0%, transparent 50%),
+    radial-gradient(circle at 90% 70%, rgba(199, 178, 137, 0.35) 0%, transparent 50%),
+    linear-gradient(90deg, rgba(160, 135, 90, 0.04) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(160, 135, 90, 0.04) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 28px 28px, 28px 28px;
+  color: var(--ink-primary);
   overflow-x: hidden;
 }
 
 .font-roman {
-  font-family: 'Cinzel', serif;
+  font-family: 'Cinzel', 'Times New Roman', serif;
 }
 
 .font-roman-decor {
-  font-family: 'Cinzel Decorative', serif;
+  font-family: 'Cinzel Decorative', 'Cinzel', serif;
 }
 
 .font-serif-book {
-  font-family: 'Merriweather', serif;
+  font-family: 'EB Garamond', Georgia, serif;
+}
+
+.font-sans-ui {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+/* Explicit Full-Color Artwork Preservation */
+.full-color-artwork,
+img[src*="book_cover"],
+img[src*="portrait"],
+img[src*="golgotha"],
+img[src*="second_temple"],
+img[src*="jerusalem_map"] {
+  filter: none !important;
+  -webkit-filter: none !important;
 }
 
 /* Custom Scrollbars */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 9px;
+  height: 9px;
 }
 ::-webkit-scrollbar-track {
-  background: #141312;
+  background: #ebe2ce;
+  border-left: 1px solid var(--papyrus-border);
 }
 ::-webkit-scrollbar-thumb {
-  background: #3e382f;
+  background: #baa785;
   border-radius: 4px;
-  border: 1px solid #c5a05944;
+  border: 1px solid #948060;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #c5a059;
+  background: var(--roman-gold);
 }
 
-/* Parchment and Gold Gradients */
-.gold-gradient-text {
-  background: linear-gradient(135deg, #f7e2a9 0%, #c5a059 50%, #947231 100%);
+/* Carved Stone Frieze Header */
+.stone-frieze {
+  background: linear-gradient(180deg, #ede7d6 0%, #ddd3bd 65%, #cfc3a7 100%);
+  border-bottom: 2px solid #a89a7c;
+  box-shadow: 
+    0 4px 18px rgba(50, 40, 30, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    inset 0 -1px 0 rgba(130, 115, 85, 0.4);
+}
+
+/* Roman Wax Seal Motif */
+.roman-wax-seal {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #bb342b 0%, #8c1e16 65%, #59100a 100%);
+  border: 2px solid #500e08;
+  box-shadow: 
+    0 3px 8px rgba(60, 20, 15, 0.35),
+    inset 0 2px 3px rgba(255, 160, 150, 0.5),
+    inset 0 -2px 3px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: transform 0.25s ease;
+}
+.roman-wax-seal:hover {
+  transform: scale(1.06) rotate(3deg);
+}
+
+/* Parchment Codex Panels */
+.parchment-panel {
+  background-color: var(--papyrus-light);
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.6) 0%, transparent 60%),
+    linear-gradient(135deg, rgba(230, 215, 185, 0.25) 0%, rgba(255, 255, 255, 0) 100%);
+  border: 1px solid var(--papyrus-border);
+  box-shadow: 
+    0 4px 20px rgba(70, 55, 40, 0.08),
+    inset 0 0 40px rgba(215, 195, 160, 0.25);
+}
+
+.parchment-panel-inset {
+  background-color: #f5eedb;
+  border: 1px solid #d4c5a5;
+  box-shadow: inset 0 2px 6px rgba(90, 70, 45, 0.12);
+}
+
+/* Roman Carved Stone Lettering */
+.carved-stone-text {
+  color: #3b2f21;
+  text-shadow: 
+    0 1px 0 rgba(255, 255, 255, 0.8),
+    0 -1px 1px rgba(0, 0, 0, 0.15);
+}
+
+.gold-carved-text {
+  background: linear-gradient(180deg, #b88628 0%, #875c10 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.6));
 }
 
-.crimson-gradient-text {
-  background: linear-gradient(135deg, #f87171 0%, #dc2626 50%, #991b1b 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.tyrian-text {
+  color: var(--roman-purple);
 }
 
-.gold-border {
-  border: 1px solid rgba(197, 160, 89, 0.35);
-  box-shadow: 0 0 15px rgba(197, 160, 89, 0.08);
+/* Classical Roman Ribbon / Divider */
+.roman-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+.roman-divider::before,
+.roman-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #b89f74, transparent);
 }
 
-.gold-glow:hover {
-  box-shadow: 0 0 25px rgba(197, 160, 89, 0.3);
-  border-color: rgba(230, 197, 117, 0.7);
+/* Book Easel & Antiquarian Display */
+.book-easel {
+  position: relative;
+  background: linear-gradient(145deg, #443220 0%, #291d12 100%);
+  padding: 10px;
+  border-radius: 12px;
+  border: 2px solid #8c6a38;
+  box-shadow: 
+    0 16px 36px rgba(40, 28, 16, 0.35),
+    0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.book-easel::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 14px;
+  border: 1px solid rgba(212, 163, 54, 0.4);
+  pointer-events-none;
 }
 
-/* Roman Ribbon / Banner */
-.roman-banner {
-  background: linear-gradient(90deg, transparent, rgba(59, 11, 62, 0.8) 20%, rgba(59, 11, 62, 0.8) 80%, transparent);
-  border-top: 1px solid rgba(197, 160, 89, 0.4);
-  border-bottom: 1px solid rgba(197, 160, 89, 0.4);
-}
-
-/* Map Markers */
+/* Map Markers: Antique Roman Bronze Seal */
 .map-marker {
   position: absolute;
   transform: translate(-50%, -50%);
@@ -90,12 +208,12 @@ body {
 }
 
 .map-marker:hover {
-  transform: translate(-50%, -50%) scale(1.25);
+  transform: translate(-50%, -50%) scale(1.22);
   z-index: 30;
 }
 
 .map-marker.active {
-  transform: translate(-50%, -50%) scale(1.35);
+  transform: translate(-50%, -50%) scale(1.3);
   z-index: 35;
 }
 
@@ -104,49 +222,90 @@ body {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  border: 2px solid #e6c575;
-  animation: pulse-ring 2.4s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+  border: 2px solid #b38222;
+  animation: pulse-ring 2.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
 }
 
 @keyframes pulse-ring {
   0% {
-    transform: scale(0.9);
-    opacity: 0.9;
+    transform: scale(0.95);
+    opacity: 0.8;
   }
   70% {
-    transform: scale(2.2);
+    transform: scale(2.1);
     opacity: 0;
   }
   100% {
-    transform: scale(2.4);
+    transform: scale(2.3);
     opacity: 0;
   }
 }
 
-/* Reader Themes */
+/* Classical Reader Themes */
 .reader-theme-papyrus {
-  background-color: #f7f1e1;
-  color: #2b261e;
-  border-color: #d1c4a5;
+  background-color: #faf5e8;
+  color: #241c14;
+  border-color: #d1c09d;
+  box-shadow: inset 0 0 30px rgba(210, 190, 150, 0.2);
 }
 .reader-theme-papyrus .text-muted {
-  color: #706552;
+  color: #635441;
 }
 
 .reader-theme-night {
-  background-color: #141312;
-  color: #e5dec9;
-  border-color: #38332c;
+  background-color: #1a1714;
+  color: #e8e0cc;
+  border-color: #3d352b;
 }
 .reader-theme-night .text-muted {
-  color: #9c9382;
+  color: #9e9380;
 }
 
 .reader-theme-sepia {
-  background-color: #26211c;
-  color: #f0e6d2;
-  border-color: #4a3e31;
+  background-color: #2b231a;
+  color: #f2e7d3;
+  border-color: #524332;
 }
 .reader-theme-sepia .text-muted {
-  color: #b0a18c;
+  color: #b5a48d;
+}
+
+/* Antique Buttons */
+.btn-roman-primary {
+  background: linear-gradient(180deg, #9e2a22 0%, #7d1c15 100%);
+  color: #faf5ea;
+  border: 1px solid #5a120c;
+  box-shadow: 0 3px 8px rgba(90, 20, 15, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  transition: all 0.2s ease;
+}
+.btn-roman-primary:hover {
+  background: linear-gradient(180deg, #b33228 0%, #8f221a 100%);
+  box-shadow: 0 5px 14px rgba(90, 20, 15, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-roman-gold {
+  background: linear-gradient(180deg, #c7952e 0%, #9e7019 100%);
+  color: #261b0a;
+  border: 1px solid #75510c;
+  box-shadow: 0 3px 8px rgba(120, 85, 20, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transition: all 0.2s ease;
+}
+.btn-roman-gold:hover {
+  background: linear-gradient(180deg, #dba738 0%, #af7d1e 100%);
+  box-shadow: 0 5px 14px rgba(120, 85, 20, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-roman-stone {
+  background: linear-gradient(180deg, #ede6d4 0%, #dad0ba 100%);
+  color: #3b3022;
+  border: 1px solid #b5a78c;
+  box-shadow: 0 2px 6px rgba(60, 48, 30, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  transition: all 0.2s ease;
+}
+.btn-roman-stone:hover {
+  background: linear-gradient(180deg, #f4eddc 0%, #e2d8c3 100%);
+  border-color: #9c8c6f;
+  color: #1f170e;
 }

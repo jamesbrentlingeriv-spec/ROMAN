@@ -1,4 +1,4 @@
-﻿// Interactive Ancient Jerusalem Map Controller
+// Interactive Ancient Jerusalem Map Controller
 import { MAP_LOCATIONS } from './novelData.js';
 
 class JerusalemMapViewer {
@@ -124,11 +124,11 @@ class JerusalemMapViewer {
     const filterButtons = document.querySelectorAll('.map-filter-btn');
     filterButtons.forEach(btn => {
       if (btn.dataset.filter === filterType) {
-        btn.classList.add('bg-amber-600', 'text-stone-900', 'font-bold');
-        btn.classList.remove('bg-stone-800', 'text-amber-200');
+        btn.classList.add('bg-[#9e2a22]', 'text-[#faf5ea]', 'font-bold');
+        btn.classList.remove('btn-roman-stone');
       } else {
-        btn.classList.remove('bg-amber-600', 'text-stone-900', 'font-bold');
-        btn.classList.add('bg-stone-800', 'text-amber-200');
+        btn.classList.remove('bg-[#9e2a22]', 'text-[#faf5ea]', 'font-bold');
+        btn.classList.add('btn-roman-stone');
       }
     });
 
@@ -164,14 +164,14 @@ class JerusalemMapViewer {
       marker.innerHTML = `
         <div class="relative flex items-center justify-center">
           <div class="marker-pulse"></div>
-          <div class="w-8 h-8 md:w-9 md:h-9 rounded-full bg-gradient-to-br from-amber-400 via-amber-600 to-amber-900 border-2 border-amber-200 shadow-xl flex items-center justify-center text-stone-950 font-roman font-bold text-xs shadow-black/80 transition-transform group-hover:scale-110">
+          <div class="w-8 h-8 md:w-9 md:h-9 rounded-full bg-gradient-to-br from-[#c7952e] via-[#9e7019] to-[#593907] border-2 border-[#fdefc7] shadow-xl flex items-center justify-center text-[#faf5ea] font-roman font-bold text-xs shadow-black/50 transition-transform group-hover:scale-110">
             ${loc.title.substring(0, 1)}
           </div>
           <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:flex flex-col items-center pointer-events-none z-50">
-            <span class="bg-stone-950/95 text-amber-200 text-xs font-roman px-2.5 py-1 rounded border border-amber-500/50 shadow-2xl whitespace-nowrap">
+            <span class="bg-[#faf6ee] text-[#382618] text-xs font-roman font-bold px-2.5 py-1 rounded-md border border-[#b38222] shadow-xl whitespace-nowrap">
               ${loc.title}
             </span>
-            <div class="w-1.5 h-1.5 bg-stone-950 rotate-45 -mt-1 border-r border-b border-amber-500/50"></div>
+            <div class="w-1.5 h-1.5 bg-[#faf6ee] rotate-45 -mt-1 border-r border-b border-[#b38222]"></div>
           </div>
         </div>
       `;
@@ -214,45 +214,45 @@ class JerusalemMapViewer {
     if (!this.drawer) return;
 
     this.drawer.innerHTML = `
-      <div class="h-full flex flex-col bg-stone-950/95 backdrop-blur-md border border-amber-500/30 rounded-2xl overflow-hidden shadow-2xl">
-        <!-- Header Image with Badge -->
-        <div class="relative h-48 sm:h-56 w-full overflow-hidden bg-stone-900 border-b border-amber-500/20">
-          <img src="${loc.image}" alt="${loc.title}" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
-          <div class="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/40 to-transparent"></div>
+      <div class="h-full flex flex-col parchment-panel border border-[#cebf9e] rounded-3xl overflow-hidden shadow-xl">
+        <!-- Header Image with Badge (Full Vibrant Color) -->
+        <div class="relative h-48 sm:h-56 w-full overflow-hidden bg-[#ded0b6] border-b border-[#cfbe9b]">
+          <img src="${loc.image}" alt="${loc.title}" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105 full-color-artwork" />
+          <div class="absolute inset-0 bg-gradient-to-t from-[#201810]/80 via-transparent to-transparent"></div>
           
           <div class="absolute top-3 left-3">
-            <span class="px-2.5 py-1 text-xs font-roman uppercase tracking-wider bg-amber-500/90 text-stone-950 font-bold rounded-full shadow-lg">
+            <span class="px-2.5 py-1 text-xs font-roman uppercase tracking-wider bg-[#9e2a22] text-[#faf5ea] font-bold rounded-full shadow-md">
               ${loc.badge}
             </span>
           </div>
 
           <div class="absolute bottom-3 left-4 right-4">
-            <p class="text-amber-400 text-xs font-roman tracking-wider uppercase">${loc.latinTitle}</p>
-            <h3 class="text-xl sm:text-2xl font-roman-decor font-bold text-amber-100 leading-tight">${loc.title}</h3>
+            <p class="text-[#e8c87d] text-xs font-roman tracking-wider uppercase">${loc.latinTitle}</p>
+            <h3 class="text-xl sm:text-2xl font-roman-decor font-bold text-[#faf5ea] leading-tight drop-shadow">${loc.title}</h3>
           </div>
         </div>
 
         <!-- Content Body -->
-        <div class="flex-1 overflow-y-auto p-4 sm:p-5 space-y-4 text-stone-300 text-sm">
+        <div class="flex-1 overflow-y-auto p-4 sm:p-5 space-y-4 text-[#33271b] text-sm bg-[#faf6ee]">
           <div>
-            <span class="text-xs font-semibold uppercase tracking-wider text-amber-500 font-roman">Historical Significance</span>
-            <p class="mt-1 leading-relaxed text-stone-300">${loc.summary}</p>
+            <span class="text-xs font-semibold uppercase tracking-wider text-[#825c11] font-roman">Historical Significance</span>
+            <p class="mt-1 leading-relaxed text-[#3b2f21] font-sans-ui">${loc.summary}</p>
           </div>
 
           <!-- Direct Quote from Book -->
-          <div class="p-3.5 rounded-xl bg-amber-950/20 border-l-2 border-amber-500 text-stone-300 italic font-serif-book text-xs sm:text-sm leading-relaxed shadow-inner">
+          <div class="p-3.5 rounded-xl bg-[#ede3cb] border-l-4 border-[#9e2a22] text-[#2c2014] italic font-serif-book text-xs sm:text-sm leading-relaxed shadow-sm">
             “${loc.bookQuote}”
-            <div class="mt-2 text-right not-italic text-xs font-roman text-amber-400">
+            <div class="mt-2 text-right not-italic text-xs font-roman text-[#7d1c15] font-bold">
               — ${loc.chapterRef} (Page ${loc.page})
             </div>
           </div>
 
           <!-- Characters at Location -->
           <div>
-            <span class="text-xs font-semibold uppercase tracking-wider text-amber-500 font-roman">Key Figures at Location</span>
+            <span class="text-xs font-semibold uppercase tracking-wider text-[#825c11] font-roman">Key Figures at Location</span>
             <div class="mt-2 flex flex-wrap gap-1.5">
               ${loc.charactersPresent.map(char => `
-                <span class="px-2 py-0.5 rounded-md bg-stone-900 border border-amber-500/20 text-stone-300 text-xs">
+                <span class="px-2 py-0.5 rounded-md bg-[#ede4d0] border border-[#cbb898] text-[#382618] text-xs font-serif-book">
                   ${char}
                 </span>
               `).join('')}
@@ -261,7 +261,7 @@ class JerusalemMapViewer {
 
           <!-- Jump to Book Reader -->
           <div class="pt-2">
-            <a href="#reader" data-chapter="${loc.page}" class="jump-to-scene-btn flex items-center justify-center gap-2 w-full py-2.5 px-4 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 text-stone-950 font-roman font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5">
+            <a href="#reader" data-chapter="${loc.page}" class="jump-to-scene-btn flex items-center justify-center gap-2 w-full py-2.5 px-4 btn-roman-primary font-roman font-bold text-xs uppercase tracking-wider rounded-xl shadow-md transition-all">
               <span>Read Scene in Chapter Reader</span>
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </a>
