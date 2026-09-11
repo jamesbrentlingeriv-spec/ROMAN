@@ -22,7 +22,7 @@
               crimson: '#8f1e16',
               papyrus: '#ede1cb',
               limestone: '#dfcfb1',
-              ink: '#231b14'
+              ink: '#1a1209'
             }
           }
         }
@@ -35,7 +35,7 @@
 </head>
 <body class="antialiased selection:bg-[#8f1e16] selection:text-white">
 
-  <!-- TOP APP BAR / CARVED STONE FRIEZE NAVIGATION -->
+  <!-- TOP APP BAR / NAVIGATION MATCHING OVERVIEW PAPYRUS BACKGROUND -->
   <header class="stone-frieze-header py-2.5 px-4 lg:px-8">
     <div class="max-w-7xl mx-auto flex items-center justify-between stone-nav-glass rounded-2xl px-4 py-2">
       
@@ -44,12 +44,12 @@
         <img src="images/wax_seal.jpg" alt="A Roman Witness Imperial Seal" class="w-11 h-11 rounded-full object-cover shadow-lg border-2 border-[#63140f] group-hover:scale-105 transition-transform" />
         <div>
           <span class="font-roman-decor text-lg md:text-xl font-black tracking-wider text-[#2e1d0f] group-hover:text-[#8f1e16] transition-colors">A ROMAN WITNESS</span>
-          <span class="hidden sm:inline-block text-[11px] font-roman text-[#6e501a] ml-2 tracking-widest uppercase font-bold">by James Brentlinger</span>
+          <span class="hidden sm:inline-block text-[11px] font-roman text-[#5c3b12] ml-2 tracking-widest uppercase font-bold">by James Brentlinger</span>
         </div>
       </a>
 
       <!-- Desktop Nav -->
-      <nav class="hidden md:flex items-center gap-6 text-xs font-roman uppercase tracking-widest text-[#3b2a19] font-bold">
+      <nav class="hidden md:flex items-center gap-6 text-xs font-roman uppercase tracking-widest text-[#2e1d0f] font-bold">
         <a href="#overview" class="hover:text-[#8f1e16] transition-colors">Overview</a>
         <a href="#map" class="hover:text-[#8f1e16] transition-colors flex items-center gap-1.5 text-[#8f1e16] font-bold">
           <span>Map of Jerusalem</span>
@@ -67,8 +67,8 @@
       <!-- Soundscape Controls & Mobile Menu Button -->
       <div class="flex items-center gap-3">
         <!-- Ambient Sound Toggle -->
-        <div class="flex items-center gap-2 bg-[#dfd0b6] border border-[#9e845c] rounded-full px-3 py-1 shadow-inner">
-          <button id="soundscape-toggle" class="text-xs font-roman flex items-center gap-1.5 text-[#3b2a19] hover:text-[#8f1e16] transition-colors font-bold" title="Toggle Ancient Ambient Sound">
+        <div class="flex items-center gap-2 bg-[#dfcfb1] border border-[#9e845c] rounded-full px-3 py-1 shadow-inner">
+          <button id="soundscape-toggle" class="text-xs font-roman flex items-center gap-1.5 text-[#2e1d0f] hover:text-[#8f1e16] transition-colors font-bold" title="Toggle Ancient Ambient Sound">
             <span class="text-sm">🎵</span>
             <span id="soundscape-status" class="hidden sm:inline text-[11px]">Ambient: Off</span>
           </button>
@@ -76,20 +76,20 @@
         </div>
 
         <!-- Mobile Nav Toggle -->
-        <button id="mobile-nav-toggle" class="md:hidden p-2 text-[#3b2a19] hover:text-[#8f1e16]" aria-label="Toggle Menu">
+        <button id="mobile-nav-toggle" class="md:hidden p-2 text-[#2e1d0f] hover:text-[#8f1e16]" aria-label="Toggle Menu">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
         </button>
       </div>
     </div>
 
     <!-- Mobile Menu Dropdown -->
-    <div id="mobile-nav-menu" class="hidden md:hidden pt-3 pb-2 mt-2 stone-nav-glass rounded-2xl px-4 space-y-2 text-sm font-roman uppercase tracking-wider text-[#3b2a19]">
-      <a href="#overview" class="block py-1.5 px-3 rounded-lg hover:bg-[#dfd0b6] hover:text-[#8f1e16]">Overview</a>
-      <a href="#map" class="block py-1.5 px-3 rounded-lg hover:bg-[#dfd0b6] text-[#8f1e16] font-bold">Map of Ancient Jerusalem</a>
-      <a href="#characters" class="block py-1.5 px-3 rounded-lg hover:bg-[#dfd0b6] hover:text-[#8f1e16]">Characters</a>
-      <a href="#reader" class="block py-1.5 px-3 rounded-lg hover:bg-[#dfd0b6] hover:text-[#8f1e16]">Chapter Reader</a>
-      <a href="#timeline" class="block py-1.5 px-3 rounded-lg hover:bg-[#dfd0b6] hover:text-[#8f1e16]">Timeline</a>
-      <a href="#history" class="block py-1.5 px-3 rounded-lg hover:bg-[#dfd0b6] hover:text-[#8f1e16]">History & Roman Law</a>
+    <div id="mobile-nav-menu" class="hidden md:hidden pt-3 pb-2 mt-2 stone-nav-glass rounded-2xl px-4 space-y-2 text-sm font-roman uppercase tracking-wider text-[#2e1d0f]">
+      <a href="#overview" class="block py-1.5 px-3 rounded-lg hover:bg-[#dfcfb1] hover:text-[#8f1e16]">Overview</a>
+      <a href="#map" class="block py-1.5 px-3 rounded-lg hover:bg-[#dfcfb1] text-[#8f1e16] font-bold">Map of Ancient Jerusalem</a>
+      <a href="#characters" class="block py-1.5 px-3 rounded-lg hover:bg-[#dfcfb1] hover:text-[#8f1e16]">Characters</a>
+      <a href="#reader" class="block py-1.5 px-3 rounded-lg hover:bg-[#dfcfb1] hover:text-[#8f1e16]">Chapter Reader</a>
+      <a href="#timeline" class="block py-1.5 px-3 rounded-lg hover:bg-[#dfcfb1] hover:text-[#8f1e16]">Timeline</a>
+      <a href="#history" class="block py-1.5 px-3 rounded-lg hover:bg-[#dfcfb1] hover:text-[#8f1e16]">History & Roman Law</a>
     </div>
   </header>
 
@@ -97,39 +97,39 @@
   <main class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-8 space-y-16">
 
     <!-- HERO SECTION ON TORN PAPYRUS SCROLL -->
-    <section id="overview" class="papyrus-scroll-container p-6 sm:p-10 lg:p-14">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+    <section id="overview" class="papyrus-scroll-container p-6 sm:p-10 lg:p-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
         
-        <!-- Left: Novel Details & Callouts -->
-        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+        <!-- Left: High-Legibility Novel Details & Callouts -->
+        <div class="lg:col-span-7 hero-readable-plaque p-6 sm:p-8 lg:p-10 space-y-6 text-center lg:text-left">
           
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#8f1e16]/20 border-2 border-[#8f1e16]/40 text-[#6e150e] text-xs font-roman uppercase tracking-widest font-extrabold shadow-sm">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#8f1e16] text-[#faf5ea] text-xs font-roman uppercase tracking-widest font-black shadow-md">
             <span>🦅 Historical Epic</span>
-            <span class="text-[#b38222]">•</span>
+            <span class="text-[#e8c87d]">•</span>
             <span>Passover 33 A.D.</span>
-            <span class="text-[#b38222]">•</span>
+            <span class="text-[#e8c87d]">•</span>
             <span>By James Brentlinger</span>
           </div>
 
-          <div class="space-y-2">
+          <div class="space-y-1.5">
             <h1 class="text-4xl sm:text-5xl lg:text-6xl ancient-chisel-title font-black tracking-wider leading-tight">
               A ROMAN WITNESS
             </h1>
-            <p class="text-base sm:text-lg font-roman font-bold text-[#5c3b12] tracking-widest uppercase">
+            <p class="text-base sm:text-lg font-roman font-bold text-[#4a2e0e] tracking-widest uppercase">
               by James Brentlinger
             </p>
           </div>
 
-          <p class="text-lg md:text-xl font-serif-book italic text-[#4e1248] leading-relaxed max-w-2xl mx-auto lg:mx-0 font-bold drop-shadow-sm">
+          <div class="p-4 rounded-xl bg-[#e8dcbf] border-l-4 border-[#8f1e16] text-lg md:text-xl font-serif-book italic text-[#3f093a] leading-relaxed font-bold shadow-inner">
             “The marble would crumble. The eagles would fall. But the broken bread would conquer the world.”
-          </p>
+          </div>
 
-          <p class="text-[#2b1f13] text-base sm:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0 font-serif-book font-medium">
-            Sent to Judea to audit Pontius Pilate's corruption, nineteen-year-old Roman patrician <strong class="text-[#8f1e16]">Marcus Aurelius Severus</strong> expects a land of thieves and fanatics. Instead, he meets <strong class="text-[#8f1e16]">Jesus of Nazareth</strong>. From the dust of Caesarea to the darkness over Golgotha and the hurled stone of the empty tomb, follow a Roman aristocrat who surrenders the purple to follow the King of Kings.
+          <p class="text-[#1a1209] text-base sm:text-lg leading-relaxed font-serif-book font-medium">
+            Sent to Judea to audit Pontius Pilate's corruption, nineteen-year-old Roman patrician <strong class="text-[#8f1e16] font-bold">Marcus Aurelius Severus</strong> expects a land of thieves and fanatics. Instead, he meets <strong class="text-[#8f1e16] font-bold">Jesus of Nazareth</strong>. From the dust of Caesarea to the darkness over Golgotha and the hurled stone of the empty tomb, follow a Roman aristocrat who surrenders the purple to follow the King of Kings.
           </p>
 
           <!-- CTAs -->
-          <div class="pt-3 flex flex-wrap items-center justify-center lg:justify-start gap-4">
+          <div class="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-4">
             <a href="#map" class="btn-wax-seal px-6 py-3.5 text-xs sm:text-sm uppercase flex items-center gap-2 shadow-lg">
               <span>Explore Ancient Jerusalem</span>
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
@@ -145,22 +145,22 @@
           </div>
 
           <!-- Feature Badges -->
-          <div class="pt-4 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-xl mx-auto lg:mx-0">
-            <div class="p-3 parchment-panel text-center">
+          <div class="pt-2 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-xl mx-auto lg:mx-0">
+            <div class="p-3 bg-[#e8dcbf] border border-[#a88e65] rounded-xl text-center shadow-sm">
               <span class="block text-xl font-roman font-black text-[#8f1e16]">20</span>
-              <span class="text-[11px] text-[#5c4731] uppercase font-roman font-bold">Full Chapters</span>
+              <span class="text-[11px] text-[#3d2c1b] uppercase font-roman font-bold">Full Chapters</span>
             </div>
-            <div class="p-3 parchment-panel text-center">
+            <div class="p-3 bg-[#e8dcbf] border border-[#a88e65] rounded-xl text-center shadow-sm">
               <span class="block text-xl font-roman font-black text-[#8f1e16]">14</span>
-              <span class="text-[11px] text-[#5c4731] uppercase font-roman font-bold">Character Dossiers</span>
+              <span class="text-[11px] text-[#3d2c1b] uppercase font-roman font-bold">Character Dossiers</span>
             </div>
-            <div class="p-3 parchment-panel text-center">
+            <div class="p-3 bg-[#e8dcbf] border border-[#a88e65] rounded-xl text-center shadow-sm">
               <span class="block text-xl font-roman font-black text-[#8f1e16]">12</span>
-              <span class="text-[11px] text-[#5c4731] uppercase font-roman font-bold">Map Hotspots</span>
+              <span class="text-[11px] text-[#3d2c1b] uppercase font-roman font-bold">Map Hotspots</span>
             </div>
-            <div class="p-3 parchment-panel text-center">
+            <div class="p-3 bg-[#e8dcbf] border border-[#a88e65] rounded-xl text-center shadow-sm">
               <span class="block text-xl font-roman font-black text-[#8f1e16]">33 A.D.</span>
-              <span class="text-[11px] text-[#5c4731] uppercase font-roman font-bold">Historical Era</span>
+              <span class="text-[11px] text-[#3d2c1b] uppercase font-roman font-bold">Historical Era</span>
             </div>
           </div>
         </div>

@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@600;700;800;900&family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
 :root {
-  --papyrus-bg: #e2d2b4;
+  --papyrus-bg: #ede1cb;
   --papyrus-panel: #ecdfc8;
   --papyrus-panel-light: #f5eedb;
   --papyrus-panel-inset: #ded0b4;
@@ -15,9 +15,9 @@
   --roman-gold-bright: #d4a036;
   --wax-red: #8f1e16;
   
-  --ink-main: #231b14;
-  --ink-secondary: #4a3a29;
-  --ink-muted: #6e5841;
+  --ink-main: #1a1209;
+  --ink-secondary: #3b2a19;
+  --ink-muted: #5c4731;
 }
 
 /* Base Body with Authentic Limestone & Papyrus Theme */
@@ -78,32 +78,35 @@ img[src*="wax_seal"] {
   background: var(--roman-gold);
 }
 
-/* Carved Stone Frieze Header */
+/* Header & Navigation Matching Overview Papyrus Background */
 .stone-frieze-header {
-  background: #d8cbb5 url('../images/stone_frieze.jpg') center top / cover no-repeat;
-  border-bottom: 3px solid #634d31;
+  background-color: #ede1cb;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.5) 0%, transparent 65%),
+    linear-gradient(180deg, #f5ecd8 0%, #ede1cb 50%, #e2d2b5 100%);
+  border-bottom: 2px solid #a88d63;
   box-shadow: 
-    0 6px 20px rgba(25, 18, 10, 0.5),
-    inset 0 -2px 6px rgba(0, 0, 0, 0.35);
+    0 4px 16px rgba(45, 30, 15, 0.12),
+    inset 0 -1px 0 rgba(110, 85, 53, 0.25);
   position: sticky;
   top: 0;
   z-index: 50;
 }
 
 .stone-nav-glass {
-  background: rgba(235, 224, 204, 0.88);
+  background: rgba(247, 241, 230, 0.92);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(138, 110, 75, 0.6);
-  box-shadow: 0 4px 12px rgba(45, 30, 15, 0.15);
+  border: 1px solid rgba(168, 141, 99, 0.6);
+  box-shadow: 0 2px 8px rgba(45, 30, 15, 0.08);
 }
 
 /* Chisel-Carved Golden Roman Typography */
 .ancient-chisel-title {
   font-family: 'Cinzel Decorative', 'Cinzel', serif;
-  background: linear-gradient(180deg, #d8a63f 0%, #a6751c 50%, #573a07 100%);
+  background: linear-gradient(180deg, #c7922d 0%, #8f6010 50%, #4a3006 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 2px 2px rgba(40, 25, 10, 0.7)) drop-shadow(0 0 1px rgba(255, 235, 180, 0.3));
+  filter: drop-shadow(0 2px 2px rgba(35, 20, 8, 0.8)) drop-shadow(0 0 1px rgba(255, 235, 180, 0.3));
 }
 
 .chisel-subhead {
@@ -113,13 +116,24 @@ img[src*="wax_seal"] {
 
 /* Deckled Torn Papyrus Scroll Container */
 .papyrus-scroll-container {
-  background: #ecdfc8 url('../images/papyrus_bg.jpg') center center / cover no-repeat;
+  background: #ede1cb url('../images/papyrus_bg.jpg') center center / cover no-repeat;
   border: 3px solid #8f7247;
   border-radius: 18px;
   box-shadow: 
     0 12px 36px rgba(35, 22, 10, 0.35),
     inset 0 0 60px rgba(110, 80, 40, 0.25);
   position: relative;
+}
+
+/* High-Legibility Hero Parchment Plaque */
+.hero-readable-plaque {
+  background: rgba(247, 239, 224, 0.94);
+  backdrop-filter: blur(4px);
+  border: 2px solid #a88e65;
+  border-radius: 20px;
+  box-shadow: 
+    0 8px 24px rgba(45, 30, 15, 0.15),
+    inset 0 0 30px rgba(215, 195, 160, 0.2);
 }
 
 /* Antiquarian Parchment Panels */
